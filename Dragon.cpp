@@ -27,3 +27,10 @@ std::string Dragon::getStats()
 {
     return getCharacterStats(this);
 }
+
+int Dragon::chooseItemCount()
+{
+    // dragons have neither helpful nor defensive items
+    return 0;
+}
+

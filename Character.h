@@ -62,7 +62,7 @@ protected:
     int hitPoints, armor;
     int attackDamage;
     bool isDefending = false;
-    int computeRandomItemCount();
+    virtual int chooseItemCount();
 
 private:
     std::unique_ptr<int> initialHitPoints, initialArmorLevel, initialAttackDamage;

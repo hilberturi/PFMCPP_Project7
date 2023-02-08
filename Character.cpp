@@ -4,6 +4,7 @@
 
 #include "DefensiveItem.h"
 #include "HelpfulItem.h"
+#include "Utility.h"
 
 Character::Character(int hp, int armor_, int attackDamage_ ) :
     hitPoints(hp),
@@ -15,6 +16,9 @@ Character::Character(int hp, int armor_, int attackDamage_ ) :
     initialHitPoints.reset( new int(hitPoints) );
     initialArmorLevel.reset( new int( armor) );
     initialAttackDamage.reset( new int( attackDamage) );
+
+    defensiveItems = makeDefensiveItems(chooseItemCount());
+    helpfulItems = makeHelpfulItems(chooseItemCount());
 }
 
 void Character::attack( Character& other )
@@ -122,7 +126,7 @@ void Character::printStats()
     std::cout << std::endl;
 }
 
-int Character::computeRandomItemCount()
+int Character::chooseItemCount()
 {
     return itemDistribution(randomEngine);
 }

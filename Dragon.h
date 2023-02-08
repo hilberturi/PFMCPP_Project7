@@ -12,6 +12,7 @@ struct Dragon : Character
     void attack(Character& other) override;
 
 private:
+    int chooseItemCount() override;
     const std::string name;
 };
 
