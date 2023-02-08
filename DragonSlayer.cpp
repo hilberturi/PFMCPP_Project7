@@ -1,6 +1,8 @@
 #include "DragonSlayer.h"
 #include "Dragon.h"
 
+#include <cassert>
+
 //DragonSlayer::DragonSlayer
 
 //DragonSlayer::getName
