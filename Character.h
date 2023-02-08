@@ -4,6 +4,7 @@
 #include <vector>
 #include <memory>
 #include <iostream>
+#include <random>
 
 #include "Item.h"
 
@@ -61,8 +62,11 @@ protected:
     int hitPoints, armor;
     int attackDamage;
     bool isDefending = false;
+    int computeRandomItemCount();
+
 private:
     std::unique_ptr<int> initialHitPoints, initialArmorLevel, initialAttackDamage;
-    
     void attackInternal(Character& other);
+    std::default_random_engine randomEngine;
+    std::uniform_int_distribution<int> itemDistribution;
 };
