@@ -4,8 +4,7 @@
 
 struct DragonSlayer : Character
 {
-    DragonSlayer (std::string name_, int hp, int armor_)
-        : Character (hp, armor_, 4), name (name_) {}
+    DragonSlayer (std::string name_, int hp, int armor_);
 
     const std::string& getName() override;
     std::string getStats() override;
@@ -13,4 +12,5 @@ struct DragonSlayer : Character
 
 private:
     const std::string name;
+    std::vector<std::unique_ptr<Item>> attackItems;
 };

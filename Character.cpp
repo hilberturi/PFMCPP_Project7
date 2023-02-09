@@ -89,7 +89,7 @@ int Character::takeDamage(int damage)
 }
 
 void Character::attackInternal(Character& other)
-{
+{    
     if( other.hitPoints <= 0 )
     {
         /*
@@ -101,11 +101,28 @@ void Character::attackInternal(Character& other)
         if (hitPoints < *initialHitPoints)
         {
             hitPoints = *initialHitPoints;
-        }
+        }        
+        
         hitPoints *= 1.1;
         *initialHitPoints = hitPoints;
         
-        std::cout << getName() << " defeated " << other.getName() << " and leveled up!" << std::endl;        
+        if (attackDamage < *initialAttackDamage)
+        {
+            attackDamage = *initialAttackDamage;
+        }
+        
+        attackDamage *= 1.1;
+        *initialAttackDamage = attackDamage;
+
+        if (armor < *initialArmorLevel)
+        {
+            armor = *initialArmorLevel;
+        }
+        armor *= 1.1;
+        *initialArmorLevel = armor;
+        
+        std::cout << getName() << " defeated " << other.getName() << " and leveled up!" << std::endl;     
+
     }
 }
 

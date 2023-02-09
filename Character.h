@@ -5,7 +5,8 @@
 #include <memory>
 #include <iostream>
 
-#include "Utility.h"
+#include "Item.h" // Utility.h prodives Item.h but I've read such hidden includes are bad style
+#include "Utility.h" 
 
 struct Character
 {

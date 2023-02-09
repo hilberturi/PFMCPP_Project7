@@ -2,8 +2,9 @@
 
 #include <chrono>
 #include <random>
-#include "HelpfulItem.h"
+#include "AttackItem.h"
 #include "DefensiveItem.h"
+#include "HelpfulItem.h"
 #include "Dwarf.h"
 #include "Paladin.h"
 #include "Dragon.h"
@@ -33,6 +34,19 @@ std::vector<std::unique_ptr<Item>> makeDefensiveItems(int num)
     }
     
     std::cout << "made " << items.size() << " defensive items" << std::endl;
+    return items;
+}
+
+std::vector<std::unique_ptr<Item>> makeAttackItems(int num)
+{
+    std::vector<std::unique_ptr<Item>> items;
+    
+    while( --num >= 0 )
+    {
+        items.push_back( std::unique_ptr<AttackItem>(new AttackItem()) );
+    }
+    
+    std::cout << "made " << items.size() << " attack items" << std::endl;
     return items;
 }
 
@@ -89,7 +103,6 @@ void useHelpfulItem(Character* character, Item* item)
     }
 }
 
-#include <cassert>
 
 void useAttackItem(Character* character, Item* item)
 {
@@ -103,11 +116,12 @@ void useAttackItem(Character* character, Item* item)
     }
     else if( auto* dragonSlayer = dynamic_cast<DragonSlayer*>(character))
     {
-        assert(false);
         //DragonSlayers get a 10x boost when attacking dragons, from their attack item.
         //so their attack item should boost their attack damage by a factor of 10
         //this means you need to GET the attack damage, multiply it by the item's boost, and BOOST the attackDamage with that multiplied value.  
         //check Character.h for available member functions you can use.
+        int attackDamage = dragonSlayer->getAttackDamage();
+        dragonSlayer->boostAttackDamage(attackDamage * item->getBoost());
     }
     else if( auto* dragon = dynamic_cast<Dragon*>(character) )
     {
