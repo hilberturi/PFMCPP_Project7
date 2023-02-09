@@ -1,5 +1,7 @@
 #include "Utility.h"
 
+#include <chrono>
+#include <random>
 #include "HelpfulItem.h"
 #include "DefensiveItem.h"
 #include "Dwarf.h"
@@ -112,3 +114,16 @@ void useAttackItem(Character* character, Item* item)
         //dragons don't carry attack items!
     }
 }
+
+static std::default_random_engine randomEngine {static_cast<unsigned>(std::chrono::system_clock::now().time_since_epoch().count())};
+
+static std::uniform_int_distribution<int> itemDistribution {1, 7};
+
+int chooseItemCount()
+{
+    return itemDistribution(randomEngine);
+}
+
+
+
+

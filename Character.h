@@ -4,13 +4,12 @@
 #include <vector>
 #include <memory>
 #include <iostream>
-#include <random>
 
-#include "Item.h"
+#include "Utility.h"
 
 struct Character
 {
-    Character(int hp, int armor_, int attackDamage_ );
+    Character(int hp, int armor_, int attackDamage_, int numDefensiveItems = chooseItemCount(), int numHelpfulItems = chooseItemCount());
     virtual ~Character() { }
     
     /*
@@ -62,11 +61,8 @@ protected:
     int hitPoints, armor;
     int attackDamage;
     bool isDefending = false;
-    virtual int chooseItemCount();
 
 private:
     std::unique_ptr<int> initialHitPoints, initialArmorLevel, initialAttackDamage;
     void attackInternal(Character& other);
-    std::default_random_engine randomEngine;
-    std::uniform_int_distribution<int> itemDistribution;
 };

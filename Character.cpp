@@ -1,24 +1,20 @@
 #include "Character.h"
 #include <iostream>
-#include <chrono>
 
 #include "DefensiveItem.h"
 #include "HelpfulItem.h"
-#include "Utility.h"
 
-Character::Character(int hp, int armor_, int attackDamage_ ) :
+Character::Character(int hp, int armor_, int attackDamage_, int numDefensiveItems, int numHelpfulItems) :
     hitPoints(hp),
     armor(armor_),
-    attackDamage(attackDamage_),
-    randomEngine(static_cast<unsigned>(std::chrono::system_clock::now().time_since_epoch().count())),
-    itemDistribution(1, 7)
+    attackDamage(attackDamage_)
 {
     initialHitPoints.reset( new int(hitPoints) );
     initialArmorLevel.reset( new int( armor) );
     initialAttackDamage.reset( new int( attackDamage) );
 
-    defensiveItems = makeDefensiveItems(chooseItemCount());
-    helpfulItems = makeHelpfulItems(chooseItemCount());
+    defensiveItems = makeDefensiveItems(numDefensiveItems);
+    helpfulItems = makeHelpfulItems(numHelpfulItems);
 }
 
 void Character::attack( Character& other )
@@ -124,9 +120,4 @@ void Character::printStats()
     
     std::cout << std::endl;
     std::cout << std::endl;
-}
-
-int Character::chooseItemCount()
-{
-    return itemDistribution(randomEngine);
 }
