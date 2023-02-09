@@ -1,6 +1,5 @@
 #include "Utility.h"
 
-#include <chrono>
 #include <random>
 
 #include "DefensiveItem.h"
@@ -116,9 +115,9 @@ void useAttackItem(Character* character, Item* item)
     }
 }
 
-static std::default_random_engine randomEngine {static_cast<unsigned>(std::chrono::system_clock::now().time_since_epoch().count())};
+std::default_random_engine randomEngine {333};
 
-static std::uniform_int_distribution<int> itemDistribution {1, 7};
+std::uniform_int_distribution<int> itemDistribution {1, 7};
 
 int chooseItemCount()
 {
