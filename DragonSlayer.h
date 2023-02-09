@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Character.h"
+#include "AttackItem.h"
 
 struct DragonSlayer : Character
 {
@@ -12,5 +13,5 @@ struct DragonSlayer : Character
 
 private:
     const std::string name;
-    std::vector<std::unique_ptr<Item>> attackItems;
+    std::unique_ptr<AttackItem> attackItem;
 };

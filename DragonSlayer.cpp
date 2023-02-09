@@ -1,15 +1,11 @@
 #include "DragonSlayer.h"
 #include "Dragon.h"
-#include "AttackItem.h"
 #include "Utility.h"
 
-#include <cassert>
-
 DragonSlayer::DragonSlayer (std::string name_, int hp, int armor_)
-        : Character (hp, armor_, 4), name (name_)
-{
-    attackItems = makeAttackItems(1);
-}
+        : Character (hp, armor_, 4), 
+          name (name_), 
+          attackItem (std::unique_ptr<AttackItem>(new AttackItem())) {}
 
 const std::string& DragonSlayer::getName()
 {
@@ -28,14 +24,10 @@ void DragonSlayer::attack(Character& other)
         //look in the Character class for how the other item types are reset after use.
         while ( dragon->getHP() > 0 )
         {
-           for (auto& item : attackItems)
+            if (auto* attackItemPtr = attackItem.get())
             {
-                if (auto* attackItem = dynamic_cast<AttackItem*>(item.get()))
-                {
-                    attackItem->use (this);
-                    item.reset(); //can only be used once!
-                    break;
-                }
+                attackItemPtr->use (this);
+                attackItem.reset(); //can only be used once!
             }
             dragon->takeDamage(attackDamage);
         }
