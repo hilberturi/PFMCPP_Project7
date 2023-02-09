@@ -2,14 +2,17 @@
 
 #include "HelpfulItem.h"
 #include "DefensiveItem.h"
-#include "Character.h"
+#include "Dwarf.h"
+#include "Paladin.h"
+#include "Dragon.h"
+#include "DragonSlayer.h"
 
 
 std::vector<std::unique_ptr<Item>> makeHelpfulItems(int num)
 {
     std::vector<std::unique_ptr<Item>> items;
     
-    while( num-- >= 0 )
+    while( --num >= 0 )
     {
         items.push_back( std::unique_ptr<HelpfulItem>(new HelpfulItem()) );
     }
@@ -22,7 +25,7 @@ std::vector<std::unique_ptr<Item>> makeDefensiveItems(int num)
 {
     std::vector<std::unique_ptr<Item>> items;
     
-    while( num-- >= 0 )
+    while( --num >= 0 )
     {
         items.push_back( std::unique_ptr<DefensiveItem>(new DefensiveItem()) );
     }

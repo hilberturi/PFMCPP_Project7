@@ -1,5 +1,5 @@
 language = "cpp"
-run = "clang++ -std=c++17 -Weverything -Wno-c++98-compat -Wno-missing-prototypes -Wno-padded -Wno-float-conversion main.cpp Dragon.cpp DragonSlayer.cpp Dwarf.cpp Paladin.cpp Character.cpp DefensiveItem.cpp HelpfulItem.cpp Item.cpp Utility.cpp && ./a.out"
+run = "clang++ -std=c++17 -Weverything -Wno-c++98-compat -Wno-missing-prototypes -Wno-padded -Wno-float-conversion main.cpp Dragon.cpp DragonSlayer.cpp Dwarf.cpp Paladin.cpp Character.cpp DefensiveItem.cpp HelpfulItem.cpp AttackItem.cpp Item.cpp Utility.cpp && ./a.out"
 hidden = ["ccls"]
 
 [nix]
