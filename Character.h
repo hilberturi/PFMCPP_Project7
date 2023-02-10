@@ -5,12 +5,11 @@
 #include <memory>
 #include <iostream>
 
-#include "Item.h" // Utility.h prodives Item.h but I've read such hidden includes are bad style
-#include "Utility.h" 
+#include "Item.h"
 
 struct Character
 {
-    Character(int hp, int armor_, int attackDamage_, int numDefensiveItems = chooseItemCount(), int numHelpfulItems = chooseItemCount());
+    Character(int hp, int armor_, int attackDamage_);
     virtual ~Character() { }
     
     /*

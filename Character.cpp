@@ -4,17 +4,14 @@
 #include "DefensiveItem.h"
 #include "HelpfulItem.h"
 
-Character::Character(int hp, int armor_, int attackDamage_, int numDefensiveItems, int numHelpfulItems) :
-    hitPoints(hp),
-    armor(armor_),
-    attackDamage(attackDamage_)
+Character::Character(int hp, int armor_, int attackDamage_) 
+    : hitPoints(hp),
+      armor(armor_),
+      attackDamage(attackDamage_)
 {
     initialHitPoints.reset( new int(hitPoints) );
     initialArmorLevel.reset( new int( armor) );
     initialAttackDamage.reset( new int( attackDamage) );
-
-    defensiveItems = makeDefensiveItems(numDefensiveItems);
-    helpfulItems = makeHelpfulItems(numHelpfulItems);
 }
 
 void Character::attack( Character& other )

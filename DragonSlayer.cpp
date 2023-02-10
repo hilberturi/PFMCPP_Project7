@@ -5,7 +5,11 @@
 DragonSlayer::DragonSlayer (std::string name_, int hp, int armor_)
         : Character (hp, armor_, 4), 
           name (name_), 
-          attackItem (std::unique_ptr<AttackItem>(new AttackItem())) {}
+          attackItem (std::unique_ptr<AttackItem>(new AttackItem())) 
+{
+    defensiveItems = makeDefensiveItems(chooseItemCount());
+    helpfulItems = makeHelpfulItems(chooseItemCount());
+}
 
 const std::string& DragonSlayer::getName()
 {
